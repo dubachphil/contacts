@@ -1,0 +1,10 @@
+server:
+  rootPath: '/api/*'
+  adminConnectors:
+  -
+    port: 9091
+    type: http
+  applicationConnectors:
+  -
+    port: 9090
+    type: http
