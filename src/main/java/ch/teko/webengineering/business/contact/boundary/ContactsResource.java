@@ -2,9 +2,7 @@ package ch.teko.webengineering.business.contact.boundary;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -30,7 +28,6 @@ public class ContactsResource {
 	public Response createContact(Contact contact) throws URISyntaxException {
 		Contact newContact = service.createNewContact(contact);
 		URI uri = new URI("/api/contact/" + newContact.getId());
-		System.out.println(uri);
 		return Response.created(uri).build();
 	}
 	
