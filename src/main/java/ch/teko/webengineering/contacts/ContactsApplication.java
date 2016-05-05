@@ -1,5 +1,7 @@
 package ch.teko.webengineering.contacts;
 
+import javax.swing.JOptionPane;
+
 import ch.teko.webengineering.business.contact.boundary.ContactResource;
 import ch.teko.webengineering.business.contact.boundary.ContactsResource;
 import ch.teko.webengineering.business.contact.controll.ContactsService;
@@ -10,6 +12,7 @@ public class ContactsApplication extends Application<ContactsConfiguration>{
 	
 	public static void main(String[] args) throws Exception {
 		new ContactsApplication().run(args);
+		
 	}
 
 	@Override
@@ -17,6 +20,9 @@ public class ContactsApplication extends Application<ContactsConfiguration>{
 		ContactsService contactsService = new ContactsService();
 		environment.jersey().register(new ContactsResource(contactsService));
 		environment.jersey().register(new ContactResource(contactsService));
+		
+		JOptionPane.showMessageDialog(null, "Ende");
+		
 	
 	}
 
