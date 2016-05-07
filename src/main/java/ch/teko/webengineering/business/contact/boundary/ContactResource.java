@@ -25,18 +25,20 @@ public class ContactResource {
 	@GET
 	public Response getOneContact(@PathParam("id") Long id) {
 		Contact contact = service.getOneContact(id);
+		if (null == contact) {
+			return Response.status(Response.Status.NOT_FOUND).build();
+		}
 		return Response.ok(contact).build();
 	}
 	
 	@DELETE
 	public Response deleteContact(@PathParam("id") Long id) {
 		service.deleteContact(id);
-		return Response.ok().build();
+		return Response.noContent().build();
 	}
 	
 	@PUT
-	public Response updateContact(@PathParam("id") Long id, Contact contact) {
-		contact.setId(id);
+	public Response updateContact(Contact contact) {
 		service.updateContact(contact);
 		return Response.ok(contact).build();
 	}
